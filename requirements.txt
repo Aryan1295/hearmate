@@ -1,0 +1,8 @@
+streamlit
+sounddevice
+soundfile
+requests
+numpy
+groq
+torch==2.3.1
+resampy

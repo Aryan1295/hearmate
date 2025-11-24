@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  hearmate:
+    build: .
+    ports:
+      - "8600:8501"
+      - "9000:9000"
+    environment:
+      - GROQ_API_KEY=${GROQ_API_KEY}
+
+  prometheus:
+    image: prom/prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+
+  grafana:
+    image: grafana/grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    volumes:
+      - grafana:/var/lib/grafana
+
+volumes:
+  grafana:

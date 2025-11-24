@@ -1,0 +1,21 @@
+# Python virtual environments
+venv/
+env/
+.venv/
+hearmate/
+ario/
+
+# Cache files
+__pycache__/
+*.pyc
+.mypy_cache/
+
+# Secret keys
+keys/
+*.env
+*.key
+*.pem
+
+# Mac / VSCode
+.DS_Store
+.vscode/

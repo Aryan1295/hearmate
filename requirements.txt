@@ -15,6 +15,9 @@ soundfile>=0.12.1
 webrtcvad
 resampy
 resemblyzer
+libportaudio2
+libsndfile1
+ffmpeg
 
 # Whisper / Groq
 groq>=0.4.0

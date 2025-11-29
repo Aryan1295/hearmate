@@ -10,6 +10,7 @@ import json
 
 # ==================== CONFIGURATION ====================
 GROQ_API_KEY = os.environ.get("GROQ_API_KEY")
+print(GROQ_API_KEY)
 if not GROQ_API_KEY:
     st.error("⚠️ GROQ_API_KEY not found. Please configure it in Streamlit secrets.")
     st.stop()

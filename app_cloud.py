@@ -9,9 +9,14 @@ from collections import deque
 import json
 
 # ==================== CONFIGURATION ====================
-GROQ_API_KEY = os.environ.get("GROQ_API_KEY")
+# Try to get API key from Streamlit secrets first, then environment variable
+try:
+    GROQ_API_KEY = st.secrets["GROQ_API_KEY"]
+except:
+    GROQ_API_KEY = os.environ.get("GROQ_API_KEY")
+
 if not GROQ_API_KEY:
-    st.error("⚠️ GROQ_API_KEY not found. Please configure it in Streamlit secrets.")
+    st.error("⚠️ GROQ_API_KEY not found. Please configure it in Streamlit secrets or environment variables.")
     st.stop()
 
 client = Groq(api_key=GROQ_API_KEY)
@@ -572,6 +577,26 @@ with st.sidebar:
     """, unsafe_allow_html=True)
     
     st.info("☁️ **Cloud Version** - File upload mode only")
+    
+    # Display API Key info
+    st.markdown("---")
+    st.markdown("### 🔑 API Configuration")
+    
+    if GROQ_API_KEY:
+        # Show masked API key
+        masked_key = GROQ_API_KEY[:7] + "..." + GROQ_API_KEY[-4:] if len(GROQ_API_KEY) > 11 else "***"
+        st.success(f"""
+        **Status:** ✅ Connected  
+        **Source:** {API_KEY_SOURCE}  
+        **Key:** `{masked_key}`
+        """)
+        
+        # Add option to view full key (hidden by default)
+        with st.expander("🔓 View Full API Key (Click to expand)"):
+            st.code(GROQ_API_KEY, language="text")
+            st.caption("⚠️ Keep this key secure and never share it publicly!")
+    else:
+        st.error("❌ No API Key found")
     
     st.markdown("---")
     st.markdown("### ✨ Features")

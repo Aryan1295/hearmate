@@ -10,7 +10,6 @@ import json
 
 # ==================== CONFIGURATION ====================
 GROQ_API_KEY = os.environ.get("GROQ_API_KEY")
-print(GROQ_API_KEY)
 if not GROQ_API_KEY:
     st.error("⚠️ GROQ_API_KEY not found. Please configure it in Streamlit secrets.")
     st.stop()
@@ -575,7 +574,7 @@ with st.sidebar:
     st.info("☁️ **Cloud Version** - File upload mode only")
     
     st.markdown("---")
-    st.markdown("### ✨ Features")
+    st.markdown("### ✨ Features",GROQ_API_KEY)
     enable_captions = st.checkbox("💬 Live Captions", value=True)
     enable_direction = st.checkbox("📍 Direction Detection", value=True)
     enable_sound_alert = st.checkbox("🔔 Loud Sound Alerts", value=True)

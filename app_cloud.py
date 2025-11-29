@@ -587,7 +587,6 @@ with st.sidebar:
         masked_key = GROQ_API_KEY[:7] + "..." + GROQ_API_KEY[-4:] if len(GROQ_API_KEY) > 11 else "***"
         st.success(f"""
         **Status:** ✅ Connected  
-        **Source:** {API_KEY_SOURCE}  
         **Key:** `{masked_key}`
         """)
         

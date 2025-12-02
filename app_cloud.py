@@ -77,6 +77,7 @@ def load_custom_css():
             padding: 20px;
             margin: 15px 0;
             font-size: 18px;
+            color: #1a1a1a;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             transition: transform 0.2s, box-shadow 0.2s;
             animation: slideIn 0.3s ease-out;
@@ -587,6 +588,7 @@ with st.sidebar:
         masked_key = GROQ_API_KEY[:7] + "..." + GROQ_API_KEY[-4:] if len(GROQ_API_KEY) > 11 else "***"
         st.success(f"""
         **Status:** ✅ Connected  
+        **Source:** {API_KEY_SOURCE}  
         **Key:** `{masked_key}`
         """)
         

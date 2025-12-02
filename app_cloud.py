@@ -582,12 +582,22 @@ with st.sidebar:
     st.markdown("---")
     st.markdown("### 🔑 API Configuration")
     
+    # Determine the source of API key
+    api_source = "Unknown"
+    try:
+        test_key = st.secrets.get("GROQ_API_KEY")
+        if test_key:
+            api_source = "Streamlit Secrets"
+    except:
+        if os.environ.get("GROQ_API_KEY"):
+            api_source = "Environment Variable"
+    
     if GROQ_API_KEY:
         # Show masked API key
         masked_key = GROQ_API_KEY[:7] + "..." + GROQ_API_KEY[-4:] if len(GROQ_API_KEY) > 11 else "***"
         st.success(f"""
         **Status:** ✅ Connected  
-        **Source:** {API_KEY_SOURCE}  
+        **Source:** {api_source}  
         **Key:** `{masked_key}`
         """)
         

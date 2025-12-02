@@ -77,6 +77,7 @@ def load_custom_css():
             padding: 20px;
             margin: 15px 0;
             font-size: 18px;
+            color: #1a1a1a;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             transition: transform 0.2s, box-shadow 0.2s;
             animation: slideIn 0.3s ease-out;
@@ -548,7 +549,6 @@ def create_conversation_summary(caption_history):
     }
 
 # ==================== STREAMLIT APP ====================
-st.set_page_config(page_title="HearMate Cloud", page_icon="🎧", layout="wide")
 load_custom_css()
 
 # Initialize session state
